@@ -13,7 +13,8 @@ import (
 func main() {
 	r := chi.NewRouter()
 	r.Use(middleware.Logger)
-	r.Get("/", controllers.InitGithubAuth)
+	r.Get("/auth/github", controllers.InitGithubAuth)
+	r.Get(config.GITHUB_CALLBACK_PATH, controllers.GithubAuthCallback)
 	fmt.Printf("Listening on %s\n", config.LISTEN_ON)
 	http.ListenAndServe(config.LISTEN_ON, r)
 }

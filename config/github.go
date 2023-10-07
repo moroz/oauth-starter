@@ -22,8 +22,16 @@ func GetenvWithDefault(name, defaultValue string) string {
 	return value
 }
 
+const COOKIE_PREFIX = "_oauth_starter"
+const GITHUB_CALLBACK_PATH = "/auth/github/callback"
+const GITHUB_AUTH_SCOPES = "read:user user:email"
+const GITHUB_INIT_AUTH_ENDPOINT = "https://github.com/login/oauth/authorize"
+const GITHUB_REQUEST_ACCESS_TOKEN_ENDPOINT = "https://github.com/login/oauth/access_token"
+
 var GITHUB_CLIENT_ID = MustGetenv("GITHUB_CLIENT_ID")
 var GITHUB_CLIENT_SECRET = MustGetenv("GITHUB_CLIENT_SECRET")
 var PORT = GetenvWithDefault("PORT", "3000")
 var PUBLIC_HOST = MustGetenv("PUBLIC_HOST")
 var LISTEN_ON = fmt.Sprintf("0.0.0.0:%s", PORT)
+var GITHUB_CALLBACK_URI = fmt.Sprintf("%s%s", PUBLIC_HOST, GITHUB_CALLBACK_PATH)
+var OAUTH_STATE_COOKIE = fmt.Sprintf("%s_state", COOKIE_PREFIX)
