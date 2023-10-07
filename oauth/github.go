@@ -80,3 +80,33 @@ func RequestGithubAccessToken(oauthCode string) (*GithubOAuthAccessTokenResponse
 
 	return &result, nil
 }
+
+type GithubUserData struct {
+	Login     string `json:"login"`
+	AvatarURL string `json:"avatar_url"`
+	Email     string `json:"email"`
+}
+
+func RequestGithubUserData(bearerToken string) (*GithubUserData, error) {
+	client := &http.Client{}
+	r, _ := http.NewRequest("GET", config.GITHUB_USER_DATA_ENDPOINT, nil)
+	r.Header.Add("Authorization", fmt.Sprintf("Bearer %s", bearerToken))
+	resp, err := client.Do(r)
+	if err != nil {
+		return nil, err
+	}
+
+	defer resp.Body.Close()
+	respBody, err := io.ReadAll(resp.Body)
+	if err != nil {
+		return nil, err
+	}
+
+	var result GithubUserData
+	err = json.Unmarshal(respBody, &result)
+	if err != nil {
+		return nil, err
+	}
+
+	return &result, nil
+}

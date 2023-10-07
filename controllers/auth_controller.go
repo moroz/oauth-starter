@@ -29,9 +29,9 @@ func setOAuthStateCookie(w http.ResponseWriter, state string) {
 	http.SetCookie(w, &http.Cookie{
 		Name:     config.OAUTH_STATE_COOKIE,
 		Value:    state,
-		Secure:   false,
+		Secure:   true,
 		HttpOnly: true,
-		SameSite: http.SameSiteStrictMode,
+		SameSite: http.SameSiteNoneMode,
 	})
 }
 
@@ -65,6 +65,7 @@ func GithubAuthCallback(w http.ResponseWriter, r *http.Request) {
 		return
 	}
 
-	resp, _ := oauth.RequestGithubAccessToken(code)
+	tokenResp, _ := oauth.RequestGithubAccessToken(code)
+	resp, _ := oauth.RequestGithubUserData(tokenResp.AccessToken)
 	fmt.Fprintln(w, resp)
 }
