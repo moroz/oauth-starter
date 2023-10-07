@@ -2,6 +2,8 @@ package main
 
 import (
 	"fmt"
+	"log"
+	"net"
 	"net/http"
 
 	"github.com/go-chi/chi/v5"
@@ -15,6 +17,10 @@ func main() {
 	r.Use(middleware.Logger)
 	r.Get("/auth/github", controllers.InitGithubAuth)
 	r.Get(config.GITHUB_CALLBACK_PATH, controllers.GithubAuthCallback)
+	listener, err := net.Listen("tcp", config.LISTEN_ON)
+	if err != nil {
+		log.Fatal(err)
+	}
 	fmt.Printf("Listening on %s\n", config.LISTEN_ON)
-	http.ListenAndServe(config.LISTEN_ON, r)
+	http.Serve(listener, r)
 }
