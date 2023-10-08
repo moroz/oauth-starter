@@ -9,6 +9,8 @@ require (
 )
 
 require (
+	github.com/GoWebProd/gip v0.0.0-20230623090727-b60d41d5d320 // indirect
+	github.com/GoWebProd/uuid7 v0.0.0-20230623091058-5f5954faed6a // indirect
 	github.com/alecthomas/template v0.0.0-20190718012654-fb15b899a751 // indirect
 	github.com/alecthomas/units v0.0.0-20211218093645-b94a6e3cc137 // indirect
 	github.com/bmatcuk/doublestar v1.3.4 // indirect
@@ -19,6 +21,7 @@ require (
 	github.com/lib/pq v1.10.9 // indirect
 	github.com/mattn/go-colorable v0.1.13 // indirect
 	github.com/mattn/go-isatty v0.0.17 // indirect
+	github.com/pkg/errors v0.9.1 // indirect
 	github.com/rjeczalik/notify v0.9.3 // indirect
 	golang.org/x/crypto v0.4.0 // indirect
 	golang.org/x/net v0.4.0 // indirect
