@@ -1,6 +1,6 @@
 module github.com/moroz/oauth-starter
 
-go 1.21.2
+go 1.21
 
 require (
 	github.com/cortesi/modd v0.8.1
