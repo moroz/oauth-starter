@@ -9,8 +9,8 @@ import (
 
 func main() {
 	db := models.ConnectToDB()
-	var user models.User
-	err := db.QueryRowx("select id, email, inserted_at, updated_at from users order by id desc limit 1").StructScan(&user)
+	db.MustExec("delete from users")
+	user, err := models.CreateUser(db, models.CreateUserParams{Email: "user@example.com"})
 	if err != nil {
 		log.Fatalln(err)
 	}

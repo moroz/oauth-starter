@@ -21,6 +21,7 @@ require (
 	github.com/lib/pq v1.10.9 // indirect
 	github.com/mattn/go-colorable v0.1.13 // indirect
 	github.com/mattn/go-isatty v0.0.17 // indirect
+	github.com/moroz/uuidv7-go v0.0.0-20231008214814-c42d2b63dc79 // indirect
 	github.com/pkg/errors v0.9.1 // indirect
 	github.com/rjeczalik/notify v0.9.3 // indirect
 	golang.org/x/crypto v0.4.0 // indirect
