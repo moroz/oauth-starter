@@ -1,3 +1,5 @@
 export GITHUB_CLIENT_ID=
 export GITHUB_CLIENT_SECRET=
 export PUBLIC_HOST=http://127.0.0.1:3000
+export DATABASE_URL=postgres://postgres:postgres@localhost/oauth_dev?sslmode=disable
+export ACCESS_TOKEN_SIGNER=JoeNXdM0z9/tqfHVliZ5CSm9uSlCTM7CS/vHnZPMCsQ=
